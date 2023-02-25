@@ -1,49 +1,27 @@
-package hinh;
-
-public class HinhVuong {
-    private double canh;
-
-    public HinhVuong(double canh) {
-        this.canh = canh;
+public class Vector {
+    private double x;
+    private double y;
+    private double z;
+    
+    public Vector(double x, double y, double z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
-
-    public double getCanh() {
-        return canh;
+    
+    public Vector add(Vector other) {
+        return new Vector(this.x + other.x, this.y + other.y, this.z + other.z);
     }
-
-    public void setCanh(double canh) {
-        this.canh = canh;
+    
+    public Vector subtract(Vector other) {
+        return new Vector(this.x - other.x, this.y - other.y, this.z - other.z);
     }
-
-    public double tinhChuVi() {
-        return 4 * canh;
+    
+    public Vector multiply(double scalar) {
+        return new Vector(this.x * scalar, this.y * scalar, this.z * scalar);
     }
-
-    public double tinhDienTich() {
-        return canh * canh;
-    }
-}
-
-public class HinhTron {
-    private double banKinh;
-
-    public HinhTron(double banKinh) {
-        this.banKinh = banKinh;
-    }
-
-    public double getBanKinh() {
-        return banKinh;
-    }
-
-    public void setBanKinh(double banKinh) {
-        this.banKinh = banKinh;
-    }
-
-    public double tinhChuVi() {
-        return 2 * Math.PI * banKinh;
-    }
-
-    public double tinhDienTich() {
-        return Math.PI * banKinh * banKinh;
+    
+    public double dotProduct(Vector other) {
+        return this.x * other.x + this.y * other.y + this.z * other.z;
     }
 }
