@@ -1,49 +1,75 @@
-package hinh;
+public class Nhanvien {
+    // Khai báo các thuộc tính của lớp Nhanvien
+    private String tenNhanVien; // Tên nhân viên
+    private double luongCoBan; // Lương cơ bản
+    private double heSoLuong; // Hệ số lương
+    private static double Luong_max = 10000000; // Lương tối đa
 
-public class HinhVuong {
-    private double canh;
-
-    public HinhVuong(double canh) {
-        this.canh = canh;
+    // Hàm khởi tạo của lớp Nhanvien
+    public Nhanvien(String tenNhanVien, double luongCoBan, double heSoLuong) {
+        this.tenNhanVien = tenNhanVien;
+        this.luongCoBan = luongCoBan;
+        this.heSoLuong = heSoLuong;
     }
 
-    public double getCanh() {
-        return canh;
+    // Phương thức tính lương của nhân viên
+    public double tinhLuong() {
+        return luongCoBan * heSoLuong;
     }
 
-    public void setCanh(double canh) {
-        this.canh = canh;
+    // Phương thức in thông tin của nhân viên
+    public void inTTin() {
+        System.out.println("Tên nhân viên: " + tenNhanVien);
+        System.out.println("Lương cơ bản: " + luongCoBan);
+        System.out.println("Hệ số lương: " + heSoLuong);
+        System.out.println("Lương: " + tinhLuong());
     }
 
-    public double tinhChuVi() {
-        return 4 * canh;
+    // Phương thức tăng hệ số lương của nhân viên
+    public boolean tangLuong(double tangHeSoLuong) {
+        double newHeSoLuong = heSoLuong + tangHeSoLuong;
+        if (tinhLuongMax(newHeSoLuong)) { // Kiểm tra lương của nhân viên có vượt quá lương tối đa không
+            return false;
+        }
+        heSoLuong = newHeSoLuong;
+        return true;
     }
 
-    public double tinhDienTich() {
-        return canh * canh;
-    }
-}
-
-public class HinhTron {
-    private double banKinh;
-
-    public HinhTron(double banKinh) {
-        this.banKinh = banKinh;
+    // Phương thức tính lương tối đa của nhân viên khi thay đổi hệ số lương
+    private boolean tinhLuongMax(double newHeSoLuong) {
+        return tinhLuong() > Luong_max && tinhLuong(newHeSoLuong) > Luong_max;
     }
 
-    public double getBanKinh() {
-        return banKinh;
+    // Các phương thức get và set cho các thuộc tính của lớp Nhanvien
+    public String getTenNhanVien() {
+        return tenNhanVien;
     }
 
-    public void setBanKinh(double banKinh) {
-        this.banKinh = banKinh;
+    public void setTenNhanVien(String tenNhanVien) {
+        this.tenNhanVien = tenNhanVien;
     }
 
-    public double tinhChuVi() {
-        return 2 * Math.PI * banKinh;
+    public double getLuongCoBan() {
+        return luongCoBan;
     }
 
-    public double tinhDienTich() {
-        return Math.PI * banKinh * banKinh;
+    public void setLuongCoBan(double luongCoBan) {
+        this.luongCoBan = luongCoBan;
+    }
+
+    public double getHeSoLuong() {
+        return heSoLuong;
+    }
+
+    public void setHeSoLuong(double heSoLuong) {
+        this.heSoLuong = heSoLuong;
+    }
+
+    public static double getLuong_max() {
+        return Luong_max;
+    }
+
+    public static void setLuong_max(double luong_max) {
+        Luong_max = luong_max;
     }
 }
